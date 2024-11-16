@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block login_active %}
+active
+{% endblock %}
+
+{% block customcss %}
+<style>
+    body {
+        overflow-y: hidden;
+    }
+    p {
+        margin-bottom: 0.25rem;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-4">
+            <div class="card no-hover">
+                <div class="card-header text-center">
+                    <h4>Register</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/register" method="post">
+                        <div class="mb-3">
+                            <label for="registerUsername" class="form-label" autocomplete="off" autofocus>Username</label>
+                            <input name="username" type="text" class="form-control" id="registerUsername" placeholder="Enter your username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input name="password" type="password" class="form-control" id="registerPassword" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <p>Already have an account? <a href="/login_del">Login here</a></p>
+                    <p class="message">{{ message }}</a></p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

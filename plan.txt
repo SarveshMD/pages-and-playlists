@@ -1,0 +1,74 @@
+- pick out all placeholder data from html and fill it by python
+  -- done
+- gotta make each pages work for every book
+  -- done
+- construct signin page
+  -- done
+- construct register page
+  -- done
+- make reading list real, generalize books for both catalogue and reading list
+  -- done
+- construct database *huge task*
+  -- done
+- make adding and removing from reading list
+  -- done
+- /book route adding and removing from reading list, change button text based on that
+  -- done
+- hovering button
+  -- done
+- redirect to the same page after adding or removing from reading list, logout, etc,.
+  -- done
+- add posting reviews
+  -- done
+- add posting new books
+  -- done
+- "nothing here"
+  -- done
+- footer, custom css stuff, logo, favicon, and a lot more
+  -- done
+- login page and register page input background color contrast, remove Login Required! while logging out from reading list
+  -- done
+- (maybe) add deleting reviews
+  -- skip
+- (maybe) author profile, list of all books by that author
+  -- skip
+- (maybe) add a footer in layout.html
+  --
+
+
+-- Database Schema
+CREATE TABLE "users" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  "username" TEXT NOT NULL UNIQUE,
+  "hash" TEXT NOT NULL
+);
+
+CREATE TABLE "authors" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  "name" TEXT NOT NULL
+);
+
+CREATE TABLE "books" (
+	"id"	INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	"title"	TEXT NOT NULL,
+  "url" TEXT NOT NULL,
+	"author_id"	INTEGER NOT NULL,
+  "year" INTEGER NOT NULL,
+  "description" TEXT NOT NULL,
+	FOREIGN KEY("author_id") REFERENCES "authors"("id")
+);
+
+CREATE TABLE "reading_lists" (
+	"user_id"	INTEGER NOT NULL,
+	"book_id"	INTEGER NOT NULL,
+	FOREIGN KEY("user_id") REFERENCES "users"("id"),
+	FOREIGN KEY("book_id") REFERENCES "books"("id")
+);
+
+CREATE TABLE "reviews" (
+  "user_id" INTEGER NOT NULL,
+  "book_id" INTEGER NOT NULL,
+  "content" TEXT NOT NULL,
+	FOREIGN KEY("user_id") REFERENCES "users"("id"),
+	FOREIGN KEY("book_id") REFERENCES "books"("id")
+);

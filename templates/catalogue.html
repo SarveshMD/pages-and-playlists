@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block title %}
+    Browse Books
+{% endblock %}
+
+{% block customcss %}
+    <style>
+        .bookmark-icon {
+            font-size: 1.5rem;
+            color: #c6c8d1c0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .bookmark-icon:hover, .bookmark-icon:active, .bookmark-icon:focus, .bookmark-icon:focus-visible {
+            color: #00bebb;
+        }
+    </style>
+
+{% endblock %}
+
+{% block home_active %}
+active
+{% endblock %}
+
+{% block body %}
+
+    <div class="container filler mt-5">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="display-4">Browse Books</h1>
+                <p class="lead">Explore our collection of books</p>
+            </div>
+        </div>
+
+        <div class="row">
+            {% if books %}
+                {% for book in books %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card" onclick="window.location.href=`/book?id={{ book['id'] }}`">
+                            <img src="{{ book['url'] }}" class="card-img-top" alt="{{ book['title']}} Cover">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <h5 class="card-title mb-0">{{ book['title'] }}</h5>
+                                        <p class="card-text">Author: {{ book['author'] }}</p>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <form action="/add-to-reading-list" method="post">
+                                            <input type="hidden" name="book_id" value="{{ book['id'] }}">
+                                            <button type="submit" class="btn bookmark-icon">
+                                                <i class="bi bi-bookmark"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="nothing-here text-center">
+                        <i class="fas fa-exclamation-circle fa-3x text-warning"></i>
+                        <p class="display-6">Nothing Here!</p>
+                        <p class="lead">Seems you've got everything in your reading list!</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

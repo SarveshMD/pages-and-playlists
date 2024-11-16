@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root { /* from monkeytype iceberg-dark theme */
+    --bs-body-bg: #212331;
+    --bg-color: #161821;
+    --caret-color: #d2d4de;
+    --main-color: #84a0c6;
+    --sub-color: #595e76;
+    --sub-alt-color: #232531;
+    --text-color: #c6c8d1;
+    --error-color: #e27878;
+    --error-extra-color: #e2a478;
+}
+
+::selection {
+    color: var(--sub-alt-color);
+    background-color: var(--main-color);
+}
+
+.card {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.no-hover:hover {
+    transform: none;
+    cursor: auto;
+}
+
+.card-body .row {
+    align-items: center;
+}
+
+.card-header h4{
+    margin-bottom: 0;
+}
+
+.navbar {
+    background-color: var(--sub-alt-color); /* Darker background for the navbar */
+    font-size: 1.25rem;
+}
+
+.filler {
+    min-height: 100vh;
+    flex:1;
+}
+
+footer {
+    background-color: var(--sub-alt-color); /* Same as navbar */
+}
+
+/* Improve text contrast */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color); /* Lighter gray for better contrast */
+    font-family: "Nunito", sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--sub-alt-color);
+    font-size: 1.1rem;
+    color: #eaebf0de;
+    border: none;
+    padding: 0.5rem;
+}
+
+.form-control:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow:  0 0 5px 2px rgba(255, 255, 255, 0.3);
+}
+
+.message {
+    color: var(--error-color);
+    font-weight: bold;
+}
+
+.logo {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 1.7rem;
+    color: #D1D1D1;
+}
+
+.logo span {
+    color: #00FA9A; /* Medium spring green */
+    font-size: 2.2rem;
+}
+
+footer .logo {
+    font-size: 1.3rem;
+}
+
+footer .logo span {
+    font-size: 1.7rem;
+}
+
+
+.card-header {
+    background-color: #161821;
+    color: #00FA9A;
+}
+
+.card-body {
+    background-color: #1a1d2a; /* Darker blue-gray */
+    color: #e1e1e1;
+}
+
+#inputUsername, #inputPassword {
+    background-color: #181a21;  /* Darker, muted blue-gray */
+    color: #d1d1d1;
+    border: 1px solid #2e3138;
+}
+
+
+#inputUsername::placeholder, #inputPassword::placeholder {
+    color: #909090;
+}
+
+button[type="submit"] {
+    background-color: #161821;
+    color: #00FA9A;
+    border: 1px solid #00FA9A;
+    box-shadow: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover */
+button[type="submit"]:hover {
+    background-color: #1a1d24;  /* Slightly lighter to hint interactivity */
+    box-shadow: 0 2px 4px rgba(0, 250, 154, 0.1); /* Soft shadow */
+    border-color: #3cffb8; /* Lighter shade for a subtle effect */
+
+}
+
+/* Focus & Focus-Visible */
+button[type="submit"]:focus, button[type="submit"]:focus-visible {
+    background-color: #1a1d24 !important;  /* Matches hover color */
+    box-shadow: 0 0 6px rgba(0, 250, 154, 0.15) !important; /* Subtle glow around the button */
+    outline: none;
+    border-color: #3cffb8 !important; /* Matches hover color */
+
+}
+
+/* Active */
+button[type="submit"]:active {
+    background-color: #13151c !important; /* Slightly darker for pressed effect */
+    box-shadow: inset 0 2px 4px rgba(0, 250, 154, 0.2) !important; /* Subtle inset shadow */
+    border-color: #00fa9a !important; /* Return to original on active press */
+
+}
+
+.card-footer {
+    background-color: #161821;
+    color: #b0b0b0;
+}
+
+.card-footer a {
+    color: #00FA9A;
+}
+
+#inputUsername:focus, #inputPassword:focus {
+    background-color: #13151c;
+    border: 1px solid #9ea7b0;
+    color: #e1e1e1;
+    box-shadow: 0 0 6px 2px #9ea7b0;
+}

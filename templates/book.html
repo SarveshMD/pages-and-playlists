@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block title %}
+    Book Details
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="{{ book['url'] }}" class="img-fluid" alt="Book Image" width="300">
+            </div>
+            <div class="col-lg-8">
+                <h1>{{ book['title'] }}</h1>
+                <p class="lead">Author: {{ book['author'] }}</p>
+                <p class="lead">Published: {{ book['year'] }}</p>
+                <p class="lead">Description: {{ book['description'] }}</p>
+                {% if book['in_reading_list'] %}
+                    <form action="/remove-from-reading-list" method="post">
+                        <input type="hidden" name="book_id" value="{{ book['id'] }}">
+                        <button type="submit" class="btn btn-primary">
+                            Remove From Reading List
+                        </button>
+                    </form>
+                {% else %}
+                    <form action="/add-to-reading-list" method="post">
+                        <input type="hidden" name="book_id" value="{{ book['id'] }}">
+                        <button type="submit" class="btn btn-primary">
+                            Add to Reading List
+                        </button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="row mt-5">
+            <div class="col text-center">
+                <h2 class="display-5">Reviews</h2>
+                <p class="lead">See what others are saying about this book</p>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for review in reviews %}
+                <div class="col-lg-6 mb-4">
+                    <div class="card no-hover">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ review['reviewer'] }}'s Review</h5>
+                            <p class="card-text">"{{ review['content'] }}"</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Post a Review -->
+        <div class="row mt-5">
+            <div class="col-lg-8 offset-lg-2">
+                <h3>Post a Review</h3>
+                <form action="/post-review" method="post">
+                    <div class="mb-3">
+                        <input type="hidden" name="book_id" value="{{ book['id'] }}">
+                        <label for="review" class="form-label">Your Review</label>
+                        <textarea class="form-control" name="content" id="review" rows="3" placeholder="Write your review here" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
