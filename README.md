@@ -1,6 +1,6 @@
 # Pages & Playlists
 
-#### Video Demo: [https://youtu.be/Ai0zD_UW9Ec](https://youtu.be/Ai0zD_UW9Ec)
+#### Video Demo: <https://youtu.be/Ai0zD_UW9Ec>
 
 #### Description:
 
