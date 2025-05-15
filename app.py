@@ -6,7 +6,7 @@ from helpers import login_required
 
 import sqlite3
 
-conn = sqlite3.connect("books.db", check_same_thread=False)
+conn = sqlite3.connect("books-legacy.db", check_same_thread=False)
 cursor_ins = conn.cursor()
 cursor_del = conn.cursor()
 cursor_sel = conn.cursor()
